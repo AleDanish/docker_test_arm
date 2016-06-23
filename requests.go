@@ -69,7 +69,7 @@ func makeRequests(f *os.File, arg string, requests_total int) {
         fmt.Println("request", req+requests_total, time.Now())
         var buffer bytes.Buffer
         buffer.WriteString("process ")
-        buffer.WriteString(os.arg)
+        buffer.WriteString(arg)
         buffer.WriteString(" - request ")
         buffer.WriteString(strconv.Itoa(req+requests_total))
         buffer.WriteString(": ")

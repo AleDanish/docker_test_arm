@@ -11,19 +11,15 @@ image_name=requests
 echo "-> About to create $num containers from the image $image_name."
 
 # Build all the containers
-#n=1
-#while [  $n -le $num ]; do
-#   echo "building container num: $n."
+echo "Building container..."
 sudo docker build -t $image_name .
-#   echo "built container num: $n."   
-#   let n+=1 
-#done
+echo "Container built"   
 
 # Run all containers simultaneuosly
 n=1
 while [  $n -le $num ]; do
-   echo "starting container num: $n."
+   echo "Starting container num: $n."
    sudo docker run -d $image_name
-   echo "started container num: $n."   
+   echo "Started container num: $n."   
    let n+=1 
 done
