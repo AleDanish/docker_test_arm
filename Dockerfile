@@ -1,7 +1,7 @@
 FROM golang:latest
 
-RUN mkdir /app
-ADD . /app
-WORKDIR /app
+#RUN mkdir /app
+ADD . /
+#WORKDIR /app
 RUN go build -o requests .
-CMD ["/app/requests"]
+CMD ["/requests"]

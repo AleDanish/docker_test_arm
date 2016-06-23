@@ -7,7 +7,7 @@ else
    echo $num
 fi
 
-image_name=requests
+image_name=docker_test_arm
 echo "-> About to create $num containers from the image $image_name."
 
 # Build all the containers
