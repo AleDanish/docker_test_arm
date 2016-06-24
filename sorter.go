@@ -6,6 +6,7 @@ import (
     "fmt"
     "os"
     "bufio"
+    "time"
 )
 
 var file_unsorted = "unsorted.txt"
@@ -20,7 +21,7 @@ func (s ByLength) Len() int {
     return len(s)
 }
 func (s ByLength) Swap(i, j int) {
-    s[i], s[j] = s[j], s[i]
+   s[i], s[j] = s[j], s[i]
 }
 func (s ByLength) Less(i, j int) bool {
     return len(s[i]) < len(s[j])
@@ -43,7 +44,7 @@ func createFile(filename string) (f *os.File) {
     check(err)
     return
 }
-func openFile (filename string) (f *os.File) {
+func openFile(filename string) (f *os.File) {
     f, err := os.Open(filename)
     check(err)
     return
@@ -51,7 +52,6 @@ func openFile (filename string) (f *os.File) {
 func writeFile(f *os.File, arr []string) {
     for i := 0; i < len(arr); i++ {
         f.WriteString(arr[i] + " ")
-        f.Sync()
     }
 }
 func readFile(f *os.File) (arr []string) {
@@ -72,18 +72,24 @@ func check(e error) {
 }
 
 func main() {
+        fmt.Println("start: ", time.Now())
         f := openFile(file_unsorted)
+        fmt.Println("after open: ", time.Now())
         arr := readFile(f)
+        fmt.Println("after read: ", time.Now())
 
 	sort.Sort(ByLength(arr))
-	fmt.Println("ByLenght: ",arr)
+//        fmt.Println("ByLenght: ",arr)
         f1 := createFile(file_length_sort)
         writeFile(f1, arr)
         closeFile(f1)
 
         sort.Sort(ByAlphabet(arr))
-        fmt.Println("ByAlphabet: ",arr)
+        fmt.Println("after sort: ", time.Now())
+//        fmt.Println("ByAlphabet: ",arr)
         f2 := createFile(file_alpha_sort)
+        fmt.Println("after create file: ",time.Now())
         writeFile(f2, arr)
+        fmt.Println("after write file: ", time.Now())
         closeFile(f2)
 }
