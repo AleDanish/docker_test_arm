@@ -1,5 +1,5 @@
 FROM golang:latest
 
 ADD . /
-RUN ["go","build","-o","/requests_native","/requests.go"].
-CMD ["/requests_native"]
+RUN ["go","build","-o","/sorter_native","/sorter.go"].
+CMD ["/sorter_native"]
