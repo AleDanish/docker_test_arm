@@ -79,17 +79,20 @@ func main() {
         fmt.Println("after read: ", time.Now())
 
 	sort.Sort(ByLength(arr))
+        fmt.Println("after LEN sort: ", time.Now())
 //        fmt.Println("ByLenght: ",arr)
         f1 := createFile(file_length_sort)
         writeFile(f1, arr)
         closeFile(f1)
+        fmt.Println("after write LEN file: ", time.Now())
 
         sort.Sort(ByAlphabet(arr))
-        fmt.Println("after sort: ", time.Now())
+        fmt.Println("after ALPH sort: ", time.Now())
 //        fmt.Println("ByAlphabet: ",arr)
+
         f2 := createFile(file_alpha_sort)
-        fmt.Println("after create file: ",time.Now())
+//        fmt.Println("after create file: ",time.Now())
         writeFile(f2, arr)
-        fmt.Println("after write file: ", time.Now())
+        fmt.Println("after write ALPH file: ", time.Now())
         closeFile(f2)
 }
