@@ -1,8 +1,8 @@
 #!/bin/bash
 Tstart=$(date +%s%6N)
-go build -o main_native main.go
+go build -o sorter_native sorter.go
 Tbuild=$(date +%s%6N)
-./main_native
+./sorter_native
 Tend=$(date +%s%6N)
 Build_Elapsed=$(((Tbuild-Tstart)/1000))
 Run_Elapsed=$(((Tend-Tbuild)/1000))
